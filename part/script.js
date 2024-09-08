@@ -4,6 +4,10 @@ function openLightbox(img) {
     var lightboxImage = document.getElementById('lightbox-image');
     var openRawButton = document.getElementById('openRawButton');
 
+    if (document.getElementById('lightbox').style.opacity > 0) {
+        return;
+    }
+
     // Set the source of the lightbox image
     lightboxImage.src = img.dataset.src;
 
@@ -12,7 +16,8 @@ function openLightbox(img) {
 
     // Display the lightbox
     lightbox.style.display = 'block';
-
+    document.getElementById('lightbox').style.pointerEvents = 'auto';
+    document.getElementById('lightbox').style.opacity = 1;
     // Clear previous image
     lightboxImage.style.opacity = 0;
     lightboxImage.onload = function () {
@@ -21,7 +26,11 @@ function openLightbox(img) {
 }
 // Function to close the lightbox
 function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
+    //document.getElementById('lightbox').style.display = 'none';
+    //document.getElementById('lightbox').style.pointerEvents = 'none';
+    
+    document.getElementById('lightbox').style.opacity = 0;
+    document.getElementById('lightbox').style.pointerEvents = 'none';
 }
 
 // Function to handle keyboard events (e.g., Escape key to close lightbox)
@@ -45,14 +54,19 @@ function showSlides(n) {
     lightboxImg.src = slides[slideIndex - 1].src;
 }
 
+// Function to Copy to Clipboard
+function copyToClipboard(container) {
+    // Remove 'mark' class from all copyIcon elements
+    const allIcons = document.querySelectorAll('.copyIcon');
+    allIcons.forEach(icon => icon.classList.remove('mark'));
 
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        alert('Copied to clipboard: ' + text);
-      })
-      .catch(err => {
-        console.error('Failed to copy: ', err);
-        alert('Failed to copy text. Please try again or use Ctrl+C/Cmd+C.');
-      });
-  }
+    // Copy text and add 'mark' class to the clicked copyIcon
+    const link = container.querySelector('.link').textContent;
+    const copyIcon = container.querySelector('.copyIcon');
+
+    navigator.clipboard.writeText(link).then(() => {
+        copyIcon.classList.add('mark');
+    }).catch(err => {
+        console.log('Copy Error', link);
+    });
+}

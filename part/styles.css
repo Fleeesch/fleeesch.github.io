@@ -10,25 +10,28 @@ footer a:hover {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #a7a7a7;
-    color: #000000;
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+
+    background-color: #383838;
+    color: #b9b9b9;
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    letter-spacing: 0.05em;
+    line-height: 1.25;
+
+    --animation-speed: 0.2s;
 }
 
 header,
 footer {
     text-align: center;
-    background-color: #3e3e3e;
+    background-color: #272727;
     color: #c4c4c4;
     padding: 0.5em 0;
-
-
 }
 
 
@@ -40,24 +43,32 @@ footer {
     padding: 0.2em 0;
 }
 
+h1,h2,h3,h4,h5{
+    font-weight:normal;
+    margin-left:0em;
+    text-align: center;
+}
+
 h2,
 h3 {
-    color: #3d3d3d
+    color: #69c5ae;
+    font-weight:normal;
 }
 
 h3 {
-    margin-left: 1em
+    margin-left: 1em;
+    font-weight:normal;
 }
 
 h4 {
-    margin-left: 2em;
-    color: #4d4d4d;
-    background-color: #00000020;
+    
+    color: #888888;
 
     padding: 0.2em;
     margin: 0em;
     border-radius: 0.2em;
     text-align: center;
+    font-weight:normal;
 }
 
 
@@ -65,11 +76,16 @@ img.logo {
     max-width: 14rem
 }
 
+
+ul ul {
+    padding-left:min(1em,5%)
+}
+
 .content {
     display: block;
     padding: 1em;
     padding: 1em;
-    max-width: 40em;
+    max-width: 50em;
     flex-grow: 1;
     margin: 0 auto;
 }
@@ -81,7 +97,7 @@ img.logo {
 
 .code,
 .content a {
-    color: #235754;
+    color: #6e93c4;
 }
 
 .code:hover,
@@ -92,7 +108,9 @@ img.logo {
 .thumbnail-set {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .thumbnail-item {
@@ -106,20 +124,19 @@ img {
 }
 
 .thumbnail-item img {
-    transition: opacity 0.25s, border 0.25s;
-    opacity: 0.5;
     border-radius: 0.1em;
-    border: 0.05em solid #00000060
+    border: 0.05em solid #00000060;
+    transition: border-color var(--animation-speed)
 }
 
 .thumbnail-item img {
-    width: 10em;
+    width: 14em;
     height: auto;
 }
 
 .thumbnail-item:hover img {
-    opacity: 1;
-    border-color:  #000000A0
+    border-color: #FFFFFF;
+    transition: border-color var(--animation-speed)
 }
 
 
@@ -127,13 +144,15 @@ img {
     color: #FFFFFF;
     font-size: 1.4em;
     opacity: 1;
-    transition: opacity 0.25s, border 0.25s;
+    transition: opacity var(--animation-speed), border var(--animation-speed);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    text-shadow: #000000FF 0em 0.05em 0.2em;
+    background-color: #00000080;
+    padding:0.2em;
+    border-radius: 0.1em;
 }
 
 .lightbox-content {
@@ -148,7 +167,9 @@ img {
 }
 
 .lightbox {
-    display: none;
+    display: block;
+
+    pointer-events: none;
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -156,7 +177,9 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
     overflow: auto;
+    transition: opacity var(--animation-speed);
 }
 
 .lightbox-content img {
@@ -164,6 +187,7 @@ img {
     max-width: 100%;
     max-height: 100%;
     margin: 0 auto;
+
 }
 
 .lightbox-content {
@@ -171,6 +195,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: opacity var(--animation-speed);
 }
 
 
@@ -199,7 +224,7 @@ img {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: background-color 0.25s ease, background-color 0.25s ease;
+    transition: background-color var(--animation-speed) ease, background-color var(--animation-speed) ease;
 }
 
 .open-raw:hover {
@@ -214,5 +239,16 @@ img {
     font-size: 2.1875em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.25s ease, background-color 0.25s ease;
+    transition: background-color var(--animation-speed) ease, var(--animation-speed) ease;
+}
+
+.copyIcon {
+    opacity: 0;
+    transition: opacity var(--animation-speed);
+    color: #9db3cf;
+}
+
+.copyIcon.mark {
+    opacity: 1;
+    transition: opacity var(--animation-speed);
 }
