@@ -1,4 +1,7 @@
-// Function to open the lightbox with the clicked image
+// ---------------------------------------------------------------------
+//  Function : Open Lightbox
+// ---------------------------------------------------------------------
+
 function openLightbox(img) {
     var lightbox = document.getElementById('lightbox');
     var lightboxImage = document.getElementById('lightbox-image');
@@ -18,44 +21,64 @@ function openLightbox(img) {
     lightbox.style.display = 'block';
     document.getElementById('lightbox').style.pointerEvents = 'auto';
     document.getElementById('lightbox').style.opacity = 1;
+
     // Clear previous image
     lightboxImage.style.opacity = 0;
     lightboxImage.onload = function () {
         lightboxImage.style.opacity = 1;
     };
 }
-// Function to close the lightbox
+
+
+// ---------------------------------------------------------------------
+//  Function : Close Lightbox
+// ---------------------------------------------------------------------
+
 function closeLightbox() {
-    //document.getElementById('lightbox').style.display = 'none';
-    //document.getElementById('lightbox').style.pointerEvents = 'none';
-    
     document.getElementById('lightbox').style.opacity = 0;
     document.getElementById('lightbox').style.pointerEvents = 'none';
 }
 
-// Function to handle keyboard events (e.g., Escape key to close lightbox)
+// ---------------------------------------------------------------------
+//  Function : Add Keyboard Listener
+// ---------------------------------------------------------------------
+
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closeLightbox();
     }
 });
 
-// Function to handle navigation between images in lightbox (not fully implemented)
+
+// ---------------------------------------------------------------------
+//  Function : Change Slide
+// ---------------------------------------------------------------------
+
+// [!] Currently not implemented
+
 var slideIndex = 1;
 
 function changeSlide(n) {
     showSlides(slideIndex += n);
 }
 
+// ---------------------------------------------------------------------
+//  Function : Show Slides
+// ---------------------------------------------------------------------
+
 function showSlides(n) {
+
     var slides = document.getElementsByClassName('lightbox-slide');
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
     lightboxImg.src = slides[slideIndex - 1].src;
 }
 
-// Function to Copy to Clipboard
+// ---------------------------------------------------------------------
+//  Function : Copy to Clipboard
+// ---------------------------------------------------------------------
 function copyToClipboard(container) {
+
     // Remove 'mark' class from all copyIcon elements
     const allIcons = document.querySelectorAll('.copyIcon');
     allIcons.forEach(icon => icon.classList.remove('mark'));
