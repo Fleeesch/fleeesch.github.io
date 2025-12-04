@@ -1,8 +1,13 @@
+:root {
+    --thumbnail-border: 10px;
+    --animation-speed: 0.25s;
+}
+
 .code,
 a {
     text-decoration: none;
     color: rgb(186, 186, 186);
-    transition: color 0.25s ease, color 0.25s ease;
+    transition: color 0.5s ease, color 0.5s ease;
 }
 
 footer a:hover {
@@ -12,8 +17,8 @@ footer a:hover {
 body {
     font-family: Tahoma, "Trebuchet MS", sans-serif;
 
-    background-color: #383838;
-    color: #b9b9b9;
+    background-color: #454545;
+    color: #dedede;
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -23,7 +28,7 @@ body {
     letter-spacing: 0.05em;
     line-height: 1.25;
 
-    --animation-speed: 0.2s;
+
 }
 
 header,
@@ -36,39 +41,44 @@ footer {
 
 
 header {
-    margin-bottom: 2em
+    padding-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 footer {
     padding: 0.2em 0;
 }
 
-h1,h2,h3,h4,h5{
-    font-weight:normal;
-    margin-left:0em;
-    text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: normal;
+    margin-left: 0em;
+
 }
 
 h2,
 h3 {
+    font-size: 1.9em;
     color: #69c5ae;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 h3 {
-    margin-left: 1em;
-    font-weight:normal;
+    font-size: 1.2em;
+    color: #f1f1f1;
+    font-weight: bold;
 }
 
 h4 {
-    
     color: #888888;
-
     padding: 0.2em;
     margin: 0em;
     border-radius: 0.2em;
     text-align: center;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 
@@ -78,18 +88,19 @@ img.logo {
 
 
 ul ul {
-    padding-left:min(1em,5%)
+    padding-left: min(1em, 5%)
+}
+
+ul li {
+    padding-bottom: 1em;
 }
 
 .content {
     display: block;
-    padding: 1em;
-    padding: 1em;
     max-width: 50em;
     flex-grow: 1;
     margin: 0 auto;
 }
-
 
 .code {
     cursor: pointer;
@@ -105,6 +116,55 @@ ul ul {
     color: #ffffff
 }
 
+.lucide {
+    vertical-align: middle;
+}
+
+.link-wrapper {
+    padding:0em;
+    margin: 0.5em;
+    display: block;
+    
+    max-width: 400px;
+    
+    
+    
+}
+.link-wrapper-content {
+    padding: 0.5em;
+    margin: 0em;
+    color: #98adbe;
+    border: 0.15em solid #161616;
+    border-radius: 0.5em;
+    background-color: #272727;
+    transition: background-color var(--animation-speed), color var(--animation-speed), border-color var(--animation-speed);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.link-wrapper-content:hover {
+    background-color: #3f3f3f;
+    color: #ffffff;
+    border-color: #a3a3a3
+}
+
+.thumbnail-set-wrapper {
+    background-color: rgb(59, 59, 59);
+    padding: 0.5em;
+    margin: 1em;
+    border-radius: 0.5em;
+}
+
+.thumbnail-set-wrapper header {
+
+    text-align: center;
+    font-size: 1.25em;
+    padding: 0.1em;
+    margin: 0.1em;
+    color: #8f8f8f;
+    background: none;
+}
+
 .thumbnail-set {
     display: flex;
     flex-wrap: wrap;
@@ -117,6 +177,12 @@ ul ul {
     margin: 0.625em;
     cursor: pointer;
     position: relative;
+    border-radius: var(--thumbnail-border);
+    transition: border-color var(--animation-speed);
+    overflow: hidden;
+    border: 0.15em solid #222222;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+
 }
 
 img {
@@ -124,35 +190,29 @@ img {
 }
 
 .thumbnail-item img {
-    border-radius: 0.1em;
-    border: 0.05em solid #00000060;
-    transition: border-color var(--animation-speed)
-}
-
-.thumbnail-item img {
-    width: 14em;
+    width: 18em;
     height: auto;
+    display: block
 }
 
-.thumbnail-item:hover img {
+.thumbnail-item:hover {
     border-color: #FFFFFF;
     transition: border-color var(--animation-speed)
 }
 
-
 .thumbnail-overlay {
-    color: #FFFFFF;
-    font-size: 1.4em;
+    color: #cacaca;
+    font-size: 1em;
     opacity: 1;
     transition: opacity var(--animation-speed), border var(--animation-speed);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
+    width: 100%;
     pointer-events: none;
-    background-color: #00000080;
-    padding:0.2em;
-    border-radius: 0.1em;
+    background-color: #4b4b4bde;
+    padding: 0.2em 0em 0.2em 0em;
+    text-align: center;
 }
 
 .lightbox-content {
@@ -243,7 +303,7 @@ img {
 }
 
 .copyIcon {
-    opacity: 0;
+    opacity: 0.25;
     transition: opacity var(--animation-speed);
     color: #9db3cf;
 }
